@@ -338,6 +338,9 @@ you should place your code here."
               (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
   (advice-add 'evil-ex-search-previous :after
               (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
+
+  (evil-define-key 'normal global-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+  (evil-define-key 'normal global-map (kbd "C-x") 'evil-numbers/dec-at-pt)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
