@@ -1,0 +1,12 @@
+[user]
+	email = patrickkenzie@gmail.com
+	name = Patrick Kenzie
+[credential]
+	helper = cache
+[core]
+	editor = vim
+[push]
+	default = simple
+[alias]
+	lg = log --oneline --graph --decorate --color
+	st = status
