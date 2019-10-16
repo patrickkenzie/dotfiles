@@ -33,17 +33,14 @@ values."
    '(
      go
      yaml
-     javascript
      python
-     javascript
-     python
-     python
-     python
-     python
-     elm
+     (elm :variables
+          elm-compile-arguments '("--output=elm.js")
+          elm-package-json "elm.json"
+          elm-sort-imports-on-save t
+          elm-format-on-save t)
      csv
      javascript
-     python
      html
      markdown
      ;; ----------------------------------------------------------------
@@ -55,14 +52,14 @@ values."
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
-     ;; git
+     git
      ;; markdown
-     ;; org
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
+     syntax-checking
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -305,7 +302,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
    ))
 
 (defun dotspacemacs/user-init ()
@@ -335,6 +332,9 @@ you should place your code here."
   (add-hook 'evil-insert-state-entry-hook 'turn-off-smartparens-mode)
   (add-hook 'evil-insert-state-exit-hook 'turn-on-smartparens-mode)
 
+  (add-hook 'elm-mode-hook (lambda ()
+                             (setq default-directory (elm--find-dependency-file-path))))
+
   (advice-add 'evil-ex-search-next :after
               (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
   (advice-add 'evil-ex-search-previous :after
@@ -342,6 +342,11 @@ you should place your code here."
 
   (evil-define-key 'normal global-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (evil-define-key 'normal global-map (kbd "C-x") 'evil-numbers/dec-at-pt)
+
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-indent-style 2)
+  (setq js2-basic-offset 2)
+  (setq js-indent-level 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -352,7 +357,16 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(elm-format-on-save t)
- '(js2-basic-offset 2))
+ '(js2-basic-offset 2 t)
+ '(org-re-reveal-title-slide (quote (quote auto)))
+ '(org-reveal-title-slide "<h1>Hug Machine</h1><h3>%t</h3><h4>%d</h4>")
+ '(org-todo-keywords
+   (quote
+    ((sequence "TODO(t)" "WAIT(w)" "FUTURE(f)" "DONE(d!)"))))
+ '(package-selected-packages
+   (quote
+    (ag org-re-reveal ox-reveal org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot evil-org flycheck-pos-tip pos-tip flycheck-elm flycheck smeargle orgit magit-gitflow magit-popup helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit transient git-commit with-editor treemacs-evil yapfify ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline powerline slim-mode scss-mode sass-mode restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text markdown-toc markdown-mode macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc indent-guide hydra hy-mode dash-functional hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-css-scss helm-ag haml-mode google-translate golden-ratio go-guru go-eldoc go-mode gh-md flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu emmet-mode elm-mode reformatter elisp-slime-nav dumb-jump diminish define-word cython-mode csv-mode column-enforce-mode coffee-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed anaconda-mode pythonic aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async f s dash sr-speedbar yaml-mode undo-tree spinner seq mmm-mode let-alist evil-unimpaired)))
+ '(tab-width 3))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
