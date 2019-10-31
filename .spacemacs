@@ -342,6 +342,7 @@ you should place your code here."
 
   (evil-define-key 'normal global-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (evil-define-key 'normal global-map (kbd "C-x") 'evil-numbers/dec-at-pt)
+  (evil-ex-define-cmd "W[rite]" 'evil-write)
 
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-indent-style 2)
