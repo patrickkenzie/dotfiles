@@ -363,6 +363,13 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(elm-format-on-save t)
  '(js2-basic-offset 2)
+ '(org-agenda-files (quote ("~/all/org")))
+ '(org-capture-templates
+   (quote
+    (("l" "Log" entry
+      (file+datetree "~/all/org/log.org")
+      "* %<%R: >%? %^g
+%t"))))
  '(org-re-reveal-title-slide (quote (quote auto)))
  '(org-reveal-title-slide "<h1>Hug Machine</h1><h3>%t</h3><h4>%d</h4>")
  '(org-todo-keywords
