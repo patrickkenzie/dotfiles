@@ -169,8 +169,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $session "(E)xit  (L)ock  (P)oweroff  (R)eboot (S)uspend"
-mode  $session {
+set $session "(E)xit  (L)ock  (P)oweroff  (R)eboot  (S)uspend"
+mode $session {
          bindsym e exec $psst i3-msg exit; mode "default"
          bindsym l exec $psst i3lock -c 282828; mode "default"
          bindsym p exec $psst systemctl poweroff; mode "default"
@@ -179,6 +179,7 @@ mode  $session {
 
          bindsym q mode "default"
          bindsym Escape mode "default"
+         bindsym Return mode "default"
 }
 
 bindsym $mod+Shift+e mode $session
@@ -192,10 +193,9 @@ bar {
         font pango:DejaVu Sans Book 13
 
 	colors {
-		#background	#222222cc
 		background #222222
 		statusline #dddddd
-		separator #666666
+		separator #777777
 
 		focused_workspace  #0066aa #0066aa #ffffff
 		active_workspace   #333333 #333333 #888888
@@ -226,6 +226,20 @@ focus_follows_mouse no
 #assign [class="Emacs"] 2
 #assign [class="Firefox"] 3
 #assign [class="jetbrains-studio"] 4
+
+# i3-gaps
+for_window [class=".*"] border pixel 2
+
+set $inner_gap 10
+set $outer_gap 0
+set $top_gap -5
+
+gaps inner $inner_gap
+gaps outer $outer_gap
+#gaps top $top_gap
+
+smart_gaps on
+smart_borders no_gaps
 
 #exec --no-startup-id nm-applet
 exec --no-startup-id xfsettingsd --sm-client-disable &
