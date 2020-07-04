@@ -25,7 +25,8 @@ bindsym Mod4+Return exec i3-sensible-terminal
 bindsym Mod1+Shift+Return exec i3-sensible-terminal
 bindsym Mod1+Shift+Enter exec i3-sensible-terminal
 bindsym Mod4+t exec thunar
-bindsym Mod4+o exec emacsclient -c -n -e '(progn (switch-to-buffer "scratch") (evil-insert-state))'
+bindsym Mod4+o exec emacsclient -c -n
+bindsym Mod4+s exec emacsclient -c -n -e '(progn (switch-to-buffer "scratch") (evil-insert-state))'
 
 # scrot & gimp - root
 #bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
