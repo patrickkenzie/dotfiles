@@ -10,3 +10,6 @@
 [alias]
 	lg = log --oneline --graph --decorate --color
 	st = status
+	s = status
+	d = diff
+	dc = diff --cached
