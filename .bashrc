@@ -129,7 +129,7 @@ fi
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-export PATH="$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.emacs.d/bin"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
