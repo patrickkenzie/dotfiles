@@ -55,6 +55,10 @@
                      (file+olp+datetree "~/all/org/log.org")
                      "* %<%R: >%? %^g
 %t")
+                    ("u" "Ultimate" entry
+                     (file+headline (lambda () (concat org-directory "ult.org")) "Thoughts")
+                     "** %? %^g"
+                    )
                     ("y" "Yesterday" entry
                      (file+olp+datetree "~/all/org/log.org")
                      "* %<%R: >%? %^g
