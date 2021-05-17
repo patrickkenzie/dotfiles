@@ -48,6 +48,7 @@
 
 (after! org (setq org-startup-indented nil))
 (setq org-tags-column -80)
+(setq org-adapt-indentation nil)
 
 (after! org (setq org-capture-templates
                   '(("l" "Log" entry
