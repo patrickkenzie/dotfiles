@@ -1,8 +1,8 @@
 #alias python=python3.6
 alias wifi_new='nmcli d wifi connect'
 alias wifi='nmcli con up'
-alias config='/usr/bin/git --git-dir=/home/kenzie/.cfg/ --work-tree=/home/kenzie'
-alias cfg='/usr/bin/git --git-dir=/home/kenzie/.cfg/ --work-tree=/home/kenzie'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias lh='ls -galFh'
 alias newt='$HOME/all/bin/newt.sh'
 alias parity='cd $HOME/all/dev/parity-server'
