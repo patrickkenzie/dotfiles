@@ -27,6 +27,9 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 
+(set-company-backend! :derived 'text-mode nil)
+(set-company-backend! :derived 'text-mode 'company-dabbrev)
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/all/org/")
@@ -44,11 +47,12 @@
   (setq web-mode-script-padding 0)
 )
 
-(add-hook 'web-mode-hook  'my-web-mode-hook)
+(add-hook 'web-mode-hook 'my-web-mode-hook)
 
 (after! org (setq org-startup-indented nil))
 (setq org-tags-column -80)
 (setq org-adapt-indentation nil)
+;;(set-company-backend! 'text-mode nil)
 
 (after! org (setq org-capture-templates
                   '(("l" "Log" entry
@@ -90,4 +94,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-function-name-face ((t (:foreground "gray")))))
