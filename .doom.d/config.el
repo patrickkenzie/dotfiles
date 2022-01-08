@@ -38,6 +38,9 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; More fine-grained undo
+(setq evil-want-fine-undo t)
+
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 (defun my-web-mode-hook ()
